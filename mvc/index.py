@@ -2,30 +2,47 @@ import web
 import requests
 import json
 
-render = web.template.render('mvc/')
+render = web.template.render("mvc/")
 
-class Index:
 
+class Index():
     def GET(self):
-        return render.index()
+        books = None
+        return render.index(books)
 
     def POST(self):
         form = web.input()
-        book = form.book
-        result = requests.get('https://www.googleapis.com/books/v1/volumes?q='+book)
-        
+        book_name = form["book_name"]
+        result = requests.get(
+            'https://www.googleapis.com/books/v1/volumes?q=' + book_name)
         books = result.json()
-        print(type(books))
-
         items = books["items"]
+        encoded = json.dumps(items)
+        decoded = json.loads(encoded)
+        #imp = []
+        books = []
 
-        coded = json.dumps(items)
-        decoded = json.loads(coded)
+        for book in decoded:
 
-        print(decoded[0]["volumeInfo"]["infoLink"])
-        
-        url = decoded[0]["volumeInfo"]["infoLink"]
+            url = book["volumeInfo"]["infoLink"]
+            key1 = book["volumeInfo"]["title"]
+            key2 = book["volumeInfo"]["authors"]
+            key3 = book["volumeInfo"]["infoLink"]
+            key4 = book["volumeInfo"]["imageLinks"]["thumbnail"]
+            #impD = {"title": key1,"authors":  key2,"infolink": key3, "thumbnail": key4}
+            #imp.append(impD)
 
-        link = "<a target='blank' href='"+url+"'>"+book+"</a>"
+            datos = {"book_name": book_name, "url": url,"title": key1,"authors":  key2,"infolink": key3, "thumbnail": key4}
+            books.append(datos)
 
-        return link
+
+            
+        print("15")
+        print(books)
+        print("15")
+
+        #print(imp)
+
+
+
+        return render.index(books)
