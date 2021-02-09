@@ -21,7 +21,6 @@ class Index():
         result = requests.get(
           'https://la1.api.riotgames.com/lol/league/v4/'+str(tier)+'leagues/by-queue/RANKED_'+str(queue)+'?api_key='+str(api_key))
         summoners = result.json()
-        print("funciona")
         items = summoners['entries']
         encoded = json.dumps(items)
         decoded = json.loads(encoded)
