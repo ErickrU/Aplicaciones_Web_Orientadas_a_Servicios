@@ -1,6 +1,6 @@
 import web
 
-render = web.template.render("api_zodiaco/")
+render = web.template.render("zod/")
 
 
 class Index():
@@ -13,7 +13,7 @@ class Index():
         mes = int(form['mes'])
         dia = int(form['dia'])
         signo = ("capricornio", "acuario", "piscis", "aries", "tauro",
-                 "géminis", "cáncer", "leo", "virgo", "libra", "escorpio",
+                 "geminis", "cancer", "leo", "virgo", "libra", "escorpio",
                  "sagitario")
         fechas = (20, 19, 20, 20, 21, 21, 22, 22, 22, 22, 22, 21)
 
@@ -29,7 +29,7 @@ class Index():
         todosLosHoroscopos = {
             "signos": [{
                 "signo":
-                "Acuario",
+                "acuario",
                 "elemento":
                 "Aire",
                 "numeroDeLaSuerte":
@@ -176,5 +176,5 @@ class Index():
                     "texto": texto
                 }
                 impresion.append(dis)
-
+        
         return render.index(impresion)

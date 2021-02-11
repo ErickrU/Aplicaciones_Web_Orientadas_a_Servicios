@@ -1,6 +1,6 @@
 import web
 
-urls = ('.*', 'api_zodiaco.index.Index')
+urls = ('/', 'zod.index.Index')
 
 app = web.application(urls, globals())
 
