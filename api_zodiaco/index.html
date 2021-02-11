@@ -1,0 +1,38 @@
+$def with(impresion)
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="icon" type="image/png" href="/icon.png" />
+	<title> Signos del zodiaco </title>
+</head>
+
+<body background="/fondo.jpg">
+	<br><div>
+              <h3>Consulta tu horoscopo</h3><br>
+              <form method="POST" class="form">
+
+                <label>Mes de nacimiento<br>
+                  <input type="number" name="mes" min=1 max=12 >
+                </label><br><br>
+
+                <br><label>Dia de nacimiento<br>
+                  <input type="number" name="dia" min=1 max=31 >
+                </label><br><br>
+                
+                <br><br>
+                <button type="submit" >Ver en JSON!</button>
+              </form><br>
+              <form method="get" action="/index.html">
+                <button type="submit">Refrescar los datos</button>
+               </form><br><br>
+              <textarea cols="150" rows="15">$impresion
+            </textarea>
+          </div>
+      </body>
+</html>
