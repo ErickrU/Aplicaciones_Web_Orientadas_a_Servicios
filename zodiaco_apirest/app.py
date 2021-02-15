@@ -165,13 +165,10 @@ class zodiacos:
                 result.append(result)
             else:
               result["error"] = "El signo que consultaste no existe o esta mal escrito :p"
-
         result = json.dumps(result)      
         return result        
 
       except:
-        result["error"] = "UPS!"
-        result = json.dumps(result)
         return result
 
 
